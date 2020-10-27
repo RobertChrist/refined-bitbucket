@@ -18,6 +18,7 @@ new OptionsSync().define({
         autolinker: true,
         highlightOcurrences: true,
         ignoreWhitespace: true,
+        preventPRWordWraping: false,
         copyFilename: true,
         keymap: true,
         collapsePullRequestDescription: true,

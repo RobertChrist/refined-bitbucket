@@ -24,6 +24,7 @@ import insertCopyFilenameNew from './insert-copy-filename-new'
 import keymap from './keymap'
 import loadAllDiffs from './load-all-diffs'
 import occurrencesHighlighter from './occurrences-highlighter'
+import preventPullRequestWordWrapNew from './prevent-pull-request-word-wrap-new'
 import pullrequestCommitAmount from './pullrequest-commit-amount'
 import insertPullrequestTemplate from './pullrequest-template'
 import insertShowComments from './show-comments'
@@ -274,6 +275,10 @@ function pullrequestRelatedFeaturesNew(config) {
                 }
             }
         )
+    }
+
+    if (config.preventPRWordWraping) {
+        preventPullRequestWordWrapNew()
     }
 }
 
