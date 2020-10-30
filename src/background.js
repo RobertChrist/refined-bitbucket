@@ -20,6 +20,7 @@ new OptionsSync().define({
         highlightOcurrences: true,
         ignoreWhitespace: true,
         copyFilename: true,
+        expandDiffs: true,
         keymap: true,
         collapsePullRequestDescription: true,
         collapseDiff: true,

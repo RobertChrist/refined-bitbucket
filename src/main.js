@@ -36,6 +36,8 @@ import mergeCommitMessageNew from './merge-commit-message-new'
 import collapsePullRequestDescription from './collapse-pull-request-description'
 import setStickyHeader from './sticky-header'
 import setLineLengthLimit from './limit-line-length'
+import insertExpandDiff from './insert-expand-diff'
+import insertExpandDiffNew from './insert-expand-diff-new'
 import setCompactPRFileTree from './compact-pull-request-file-tree'
 
 import observeForWordDiffs from './observe-for-word-diffs'
@@ -191,6 +193,10 @@ function codeReviewFeatures(config) {
             insertCopyFilename(diff)
         }
 
+        if (config.expandDiffs) {
+            insertExpandDiff(diff)
+        }
+
         if (config.diffPlusesAndMinuses || config.syntaxHighlight) {
             const afterWordDiff = observeForWordDiffs(diff)
 
@@ -264,7 +270,7 @@ function pullrequestRelatedFeaturesNew(config) {
         mergeCommitMessageNew(config.mergeCommitMessageUrl)
     }
 
-    if (config.copyFilename) {
+    if (config.copyFilename || config.expandDiffs) {
         // eslint-disable-next-line no-new
         new SelectorObserver(
             document.body,
@@ -272,6 +278,10 @@ function pullrequestRelatedFeaturesNew(config) {
             function() {
                 if (config.copyFilename) {
                     insertCopyFilenameNew(this)
+                }
+
+                if (config.expandDiffs) {
+                    insertExpandDiffNew(this)
                 }
             }
         )
