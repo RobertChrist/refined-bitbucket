@@ -13,6 +13,7 @@ We all know BitBucket lacks some features that we have in other platforms like G
 ## Current features
 
 -   Adds syntax highlighting for pull requests and commits. See the full list of enabled languages [here][prismjs-languages], and then [here][language-ext]. [Test them here](http://prismjs.com/test.html). Missing any language? [Let me know](https://github.com/refined-bitbucket/refined-bitbucket/issues) or submit a pull request!
+    -   As of Nov, 2020, this now works in both the new and old PR UIs!
 -   New button on diffs that expands every expandable section in the diff, with only one click!
 -   Removes Whitespace from the FileTree Menu in the New PR UI (false by default, enable in extension options)
 -   Double click on a word to highlight all occurrences.

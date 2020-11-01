@@ -28,7 +28,7 @@ import pullrequestCommitAmount from './pullrequest-commit-amount'
 import insertPullrequestTemplate from './pullrequest-template'
 import insertShowComments from './show-comments'
 import addSidebarCounters from './sidebar-counters'
-import syntaxHighlight from './syntax-highlight'
+import { syntaxHighlightOldUI, syntaxHighlightNewUI } from './syntax-highlight'
 import comparePagePullRequest from './compare-page-pull-request'
 import setTabSize from './tab-size'
 import mergeCommitMessage from './merge-commit-message'
@@ -205,7 +205,11 @@ function codeReviewFeatures(config) {
             }
 
             if (config.syntaxHighlight) {
-                syntaxHighlight(diff, afterWordDiff)
+                syntaxHighlightOldUI(
+                    diff,
+                    afterWordDiff,
+                    config.syntaxHighlightTheme
+                )
             }
         }
     }
@@ -282,6 +286,19 @@ function pullrequestRelatedFeaturesNew(config) {
 
                 if (config.expandDiffs) {
                     insertExpandDiffNew(this)
+                }
+            }
+        )
+    }
+
+    if (config.syntaxHighlight) {
+        // eslint-disable-next-line no-new
+        new SelectorObserver(
+            document.body,
+            'section[aria-label="Diffs"]',
+            function() {
+                if (config.syntaxHighlight) {
+                    syntaxHighlightNewUI(this, config.syntaxHighlightTheme)
                 }
             }
         )
